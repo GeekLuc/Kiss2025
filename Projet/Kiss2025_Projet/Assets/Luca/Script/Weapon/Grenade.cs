@@ -6,6 +6,7 @@ public class Grenade : MonoBehaviour
 {
     public AudioClip explosionSound; // Assignez le fichier audio de l'explosion dans l'inspecteur
     private AudioSource audioSource;
+    public GameObject Explosion;
 
     [SerializeField] public float damage, TimeBeforeBOOM, speed = 10f, height = 5f;
 
@@ -31,6 +32,7 @@ public class Grenade : MonoBehaviour
             }
         }
         print("BOOM");
+        Instantiate(Explosion, transform.position, transform.rotation);
         
         Destroy(gameObject);
     }

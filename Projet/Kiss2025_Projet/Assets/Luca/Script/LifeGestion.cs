@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +13,8 @@ public class LifeGestion : MonoBehaviour
     [SerializeField] private SpriteRenderer charachterSprite;
     [SerializeField] private float hitFlashDuration = 0.5f; // Temps pendant lequel le sprite reste rouge
     private AudioSource audioSource;
-    private Coroutine hitCoroutine; // Stocke la coroutine en cours
+    private Coroutine hitCoroutine;
+    public GameObject puff;
 
     private void Start()
     {
@@ -47,6 +49,11 @@ public class LifeGestion : MonoBehaviour
                 vagueEnnemy.DecrementEnemiesRemaining();
             }
         }
+    }
+
+    public void OnDestroy()
+    {
+        Instantiate(puff, transform.position, Quaternion.identity);
     }
 
     private void hit()

@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionSound: {fileID: 8300000, guid: c5a613ecefba97d45a6a0823494fe777, type: 3}
+  Explosion: {fileID: 4070937683752320434, guid: c5a3cc5d0ecddb04a90331f8080bc75e, type: 3}
   damage: 4
   TimeBeforeBOOM: 3
   speed: 10
