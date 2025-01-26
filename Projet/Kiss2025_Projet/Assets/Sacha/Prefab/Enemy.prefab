@@ -467,6 +467,8 @@ MonoBehaviour:
   isPlayer: 0
   damageSound: {fileID: 8300000, guid: 3ff8b1e998520234d874dc205dedd2ca, type: 3}
   healSound: {fileID: 0}
+  charachterSprite: {fileID: 2483893399285281432}
+  hitFlashDuration: 0.15
 --- !u!82 &3247275928988755007
 AudioSource:
   m_ObjectHideFlags: 0

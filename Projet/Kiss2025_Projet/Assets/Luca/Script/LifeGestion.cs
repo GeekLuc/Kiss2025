@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +9,10 @@ public class LifeGestion : MonoBehaviour
     [SerializeField] private bool isPlayer = false;
     [SerializeField] private AudioClip damageSound;
     [SerializeField] private AudioClip healSound;
+    [SerializeField] private SpriteRenderer charachterSprite;
+    [SerializeField] private float hitFlashDuration = 0.5f; // Temps pendant lequel le sprite reste rouge
     private AudioSource audioSource;
+    private Coroutine hitCoroutine; // Stocke la coroutine en cours
 
     private void Start()
     {
@@ -28,7 +30,10 @@ public class LifeGestion : MonoBehaviour
         {
             audioSource.PlayOneShot(damageSound);
         }
-        print(" DEGATS : Life: " + LifeCurrent);
+
+        Debug.Log("DEGATS : Life: " + LifeCurrent);
+        hit();
+
         if (LifeCurrent <= 0)
         {
             Destroy(gameObject);
@@ -36,12 +41,33 @@ public class LifeGestion : MonoBehaviour
             {
                 SceneManager.LoadScene("S_GameOver");
             }
-            else if (gameObject.tag == "Ennemy")
+            else if (gameObject.CompareTag("Ennemy"))
             {
                 VagueEnnemy vagueEnnemy = GameObject.Find("GameManager").GetComponent<VagueEnnemy>();
                 vagueEnnemy.DecrementEnemiesRemaining();
             }
         }
+    }
+
+    private void hit()
+    {
+        if (hitCoroutine != null)
+        {
+            StopCoroutine(hitCoroutine);
+        }
+        
+        hitCoroutine = StartCoroutine(FlashRed());
+    }
+
+    private IEnumerator FlashRed()
+    {
+        charachterSprite.color = Color.red;
+        
+        yield return new WaitForSeconds(hitFlashDuration);
+        
+        charachterSprite.color = Color.white;
+        
+        hitCoroutine = null;
     }
 
     public void TakeHealth(float health)
