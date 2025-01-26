@@ -271,10 +271,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Vague : 00'
+  m_text: VAGUE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 78cf8efb4749cbc4889c93d578f65f53, type: 2}
+  m_sharedMaterial: {fileID: 2499562323314077166, guid: 78cf8efb4749cbc4889c93d578f65f53, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1244,8 +1244,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.8573, y: -8.5178}
-  m_SizeDelta: {x: 1488.3, y: 740.8962}
+  m_AnchoredPosition: {x: 5.8573, y: -3.7143}
+  m_SizeDelta: {x: 1488.3, y: 731.2891}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &405452299
 CanvasRenderer:
@@ -4662,7 +4662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f8eb58f6f12b9147b178c53b5a58729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesToEliminatePerWave: 010000000300000005000000080000000a0000000f000000
+  enemiesToEliminatePerWave: 05000000080000000a0000000d0000001100000014000000
   enemyPrefab: {fileID: 8512023276733198157, guid: 27a24bcdeff32854581d0d6faf7db110, type: 3}
   spawnPoints:
   - {fileID: 630409120}
@@ -4706,6 +4706,7 @@ MonoBehaviour:
   numberOfPickups: 0300000003000000030000000300000003000000
   parentObject: {fileID: 1391688745}
   spawnRadius: 50
+  yOffset: 0.5
 --- !u!1 &1458010831
 GameObject:
   m_ObjectHideFlags: 0

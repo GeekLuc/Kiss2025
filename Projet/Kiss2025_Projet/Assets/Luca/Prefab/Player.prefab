@@ -60,8 +60,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6.140848, y: 1, z: 7.7443495}
-  m_Center: {x: -0.010063171, y: 0, z: -0.6286292}
+  m_Size: {x: 1.8808448, y: 3.1525197, z: 5.0105305}
+  m_Center: {x: 0.44370186, y: 1.0762599, z: -1.0458188}
 --- !u!54 &4115693705247350138
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -99,8 +99,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 20
-  m_Acceleration: 40
+  m_Speed: 5
+  m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 0
   m_StoppingDistance: 0
@@ -130,6 +130,7 @@ MonoBehaviour:
   healSound: {fileID: 0}
   charachterSprite: {fileID: 2291765540413441537}
   hitFlashDuration: 0.3
+  puff: {fileID: 0}
 --- !u!114 &1057655509858289950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +168,7 @@ MonoBehaviour:
   sardinneAttackSound: {fileID: 8300000, guid: b66f5cc715b167c489da693bbd071597, type: 3}
   paralysedAttackSound: {fileID: 8300000, guid: b66f5cc715b167c489da693bbd071597, type: 3}
   tourelleAttackSound: {fileID: 8300000, guid: 18f299d0ffc4a494d82213840430976d, type: 3}
+  swordAttackDelay: 0.4
 --- !u!114 &4852381693310595197
 MonoBehaviour:
   m_ObjectHideFlags: 0

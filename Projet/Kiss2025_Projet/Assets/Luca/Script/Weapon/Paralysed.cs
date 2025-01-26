@@ -23,6 +23,7 @@ public class Paralysed : MonoBehaviour
         if (other.CompareTag("Ennemy"))
         {
             enemyStateManager.Stunned = true;
+            Destroy(gameObject);
         }
     }
 }

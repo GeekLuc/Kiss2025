@@ -98,8 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeLife: 10
   weaponPrefab: {fileID: 3658287270750452076, guid: 95d556782e5b0e349a6e483997912216, type: 3}
-  fireRate: 1
-  detectionRadius: 15
+  fireRate: 1.5
+  detectionRadius: 10
   fireSound: {fileID: 8300000, guid: b66f5cc715b167c489da693bbd071597, type: 3}
 --- !u!82 &7016653974932320227
 AudioSource:

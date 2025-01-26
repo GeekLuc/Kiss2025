@@ -10,6 +10,9 @@ public class GeneratePickUp : MonoBehaviour
     public Transform parentObject; // Objet parent contenant les points de spawn
     private Transform[] spawnPoints; // Points de spawn définis
     public float spawnRadius = 50f;
+    public float yOffset = 0.5f; // Offset en Y pour ajuster la hauteur des pickups
+
+    private List<Transform> usedSpawnPoints = new List<Transform>();
 
     void Start()
     {
@@ -34,14 +37,34 @@ public class GeneratePickUp : MonoBehaviour
             for (int j = 0; j < numberOfPickups[i]; j++)
             {
                 GameObject pickupPrefab = pickupPrefabs[i];
-                Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)]; // Sélectionner un point de spawn aléatoire
+                Transform spawnPoint = GetUniqueSpawnPoint(); // Obtenir un point de spawn unique
 
-                NavMeshHit hit;
-                if (NavMesh.SamplePosition(spawnPoint.position, out hit, spawnRadius, NavMesh.AllAreas))
+                if (spawnPoint != null)
                 {
-                    Instantiate(pickupPrefab, hit.position, Quaternion.identity);
+                    NavMeshHit hit;
+                    if (NavMesh.SamplePosition(spawnPoint.position, out hit, spawnRadius, NavMesh.AllAreas))
+                    {
+                        Vector3 spawnPosition = hit.position;
+                        spawnPosition.y += yOffset; // Ajouter l'offset en Y
+                        Instantiate(pickupPrefab, spawnPosition, Quaternion.identity);
+                    }
                 }
             }
         }
     }
+
+    Transform GetUniqueSpawnPoint()
+    {
+        List<Transform> availableSpawnPoints = new List<Transform>(spawnPoints);
+        availableSpawnPoints.RemoveAll(sp => usedSpawnPoints.Contains(sp));
+
+        if (availableSpawnPoints.Count > 0)
+        {
+            Transform spawnPoint = availableSpawnPoints[Random.Range(0, availableSpawnPoints.Count)];
+            usedSpawnPoints.Add(spawnPoint);
+            return spawnPoint;
+        }
+        return null; // Aucun point de spawn disponible
+    }
 }
+

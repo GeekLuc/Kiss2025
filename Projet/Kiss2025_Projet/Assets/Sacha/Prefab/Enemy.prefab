@@ -608,8 +608,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe234295af893e540b9c601753e2c844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LifeCurrent: 20
-  LifeMax: 20
+  LifeCurrent: 50
+  LifeMax: 50
   isPlayer: 0
   damageSound: {fileID: 8300000, guid: 3ff8b1e998520234d874dc205dedd2ca, type: 3}
   healSound: {fileID: 0}

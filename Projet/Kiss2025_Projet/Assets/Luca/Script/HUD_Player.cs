@@ -134,7 +134,7 @@ public class HUD_Player : MonoBehaviour
     {
         if (Nb_vague != null)
         {
-            Nb_vague.text = "Vague " + currentWave.ToString();
+            Nb_vague.text = "WAVES " + currentWave.ToString();
         }
     }
 
@@ -142,7 +142,7 @@ public class HUD_Player : MonoBehaviour
     {
         if (Nb_ennemieRestant != null)
         {
-            Nb_ennemieRestant.text = "  restants: " + enemiesRemaining.ToString();
+            Nb_ennemieRestant.text = "  REMAINING " + enemiesRemaining.ToString();
         }
     }
 

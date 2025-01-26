@@ -18,7 +18,9 @@ public class AttackPlayer : MonoBehaviour
     [SerializeField] private AudioClip paralysedAttackSound;
     [SerializeField] private AudioClip tourelleAttackSound;
     private AudioSource audioSource;
-
+    // Ajoutez cette variable pour le délai d'attaque
+    [SerializeField] private float swordAttackDelay = 1.0f;
+    private bool canAttack = true;
     void Start()
     {
         moveScript = GetComponent<Move>();
@@ -33,7 +35,7 @@ public class AttackPlayer : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canAttack)
         {
             PerformAttack();
         }
@@ -80,6 +82,7 @@ public class AttackPlayer : MonoBehaviour
         hudPlayer.UpdateMunitionText(currentMunition);
     }
 
+
     void PerformAttack()
     {
         if (weaponPrefabs[currentAttackIndex].name == "Sword" || munitionPlayer.UseMunition(currentAttackIndex))
@@ -99,9 +102,7 @@ public class AttackPlayer : MonoBehaviour
             }
             if (weaponPrefabs[currentAttackIndex].name == "Sword")
             {
-                SwordAttack();
-                animator.Play("SwordPecheur", 0, 0f);
-                PlaySound(swordAttackSound);
+                StartCoroutine(SwordAttackWithDelay());
             }
             if (weaponPrefabs[currentAttackIndex].name == "Paralysed")
             {
@@ -129,6 +130,16 @@ public class AttackPlayer : MonoBehaviour
         {
             audioSource.PlayOneShot(clip);
         }
+    }
+
+    private IEnumerator SwordAttackWithDelay()
+    {
+        canAttack = false;
+        SwordAttack();
+        animator.Play("SwordPecheur", 0, 0f);
+        PlaySound(swordAttackSound);
+        yield return new WaitForSeconds(swordAttackDelay);
+        canAttack = true;
     }
 
     //ATTAQUE DU LANCER DE POISSON, Dague//
